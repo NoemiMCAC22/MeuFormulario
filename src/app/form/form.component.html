@@ -1,0 +1,48 @@
+<form #myForm="ngForm" (ngSubmit)="onSubmit()">
+    <label for="name">Nome completo:</label>
+    <input type="text" name="name" [(ngModel)]="name" required>
+  
+    <label for="email">Email:</label>
+    <input type="email" name="email" [(ngModel)]="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+  
+    <label for="nif">NIF:</label>
+    <input type="text" name="nif" [(ngModel)]="nif" required pattern="[0-9]{9}" (blur)="validateNif()">
+  
+    <label for="birthdate">Data de Nascimento:</label>
+    <input type="date" name="birthdate" [(ngModel)]="birthdate" required (change)="validateAge()">
+  
+    <label for="country">País:</label>
+    <select name="country" [(ngModel)]="country" required (change)="updateCities()">
+      <option value="">Selecione um país</option>
+      <option value="Portugal">Portugal</option>
+      <option value="Brasil">Brasil</option>
+      <option value="Espanha">Espanha</option>
+      <option value="França">França</option>
+      <option value="Itália">Itália</option>
+    </select>
+  
+    <label for="city">Cidade:</label>
+    <select name="city" [(ngModel)]="city" required>
+      <option value="">Selecione uma cidade</option>
+      <option *ngFor="let city of cities">{{ city }}</option>
+    </select>
+  
+    <label for="address">Endereço:</label>
+    <input type="text" name="address" [(ngModel)]="address" required>
+  
+    <label for="zipcode">Código Postal:</label>
+    <input type="text" name="zipcode" [(ngModel)]="zipcode" required [pattern]="zipcodePattern">
+  
+    <label for="phone">Telefone:</label>
+    <input type="text" name="phone" [(ngModel)]="phone" required pattern="[239][0-9]{8}|[2][1-9][0-9]{7}|[9][1236][0-9]{7}" (blur)="validatePhone()">
+  
+    <label for="gender">Gênero:</label>
+    <select name="gender" [(ngModel)]="gender" required>
+      <option value="">Selecione o gênero</option>
+      <option value="Masculino">Masculino</option>
+      <option value="Feminino">Feminino</option>
+      <option value="Outro">Outro</option>
+    </select>
+  
+    <button type="submit" [disabled]="myForm.invalid || !isAgeValid || !isNifValid || !isZipcodeValid || !isPhoneValid">Enviar</button>
+  </form>
