@@ -4,9 +4,7 @@
     box-sizing: border-box;
 }
 
-body{
-    padding: 1rem;
-}
+
 form{
     display: flex;
     flex-direction: column;
@@ -16,18 +14,13 @@ form{
     color: black;
     font-weight: bold;
     }
-  h1 {
-    color:black ;
-    text-align: center;
-    font-style: italic;
-   
-  }
+  
  
   label {
     font-weight: bold;
     margin-bottom: 5px;
   }
-    input, select, textarea {
+    input, select{
         width: 100%;
         padding: 10px;
         border: 1px solid #ccc;
